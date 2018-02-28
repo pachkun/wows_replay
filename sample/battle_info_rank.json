@@ -1,0 +1,107 @@
+{
+  "clientVersionFromXml": "0, 6, 15, 310510",
+  "gameMode": 7,
+  "clientVersionFromExe": "0, 6, 15, 310510",
+  "mapDisplayName": "15_NE_north",
+  "mapId": 9,
+  "matchGroup": "ranked",
+  "duration": 1200,
+  "gameLogic": "Domination",
+  "name": "7x7",
+  "scenario": "Ranked_Domination",
+  "playerID": 0,
+  "vehicles": [
+    {
+      "shipId": 4181637072,
+      "relation": 2,
+      "id": 427362,
+      "name": "suroviy78"
+    },
+    {
+      "shipId": 4076746192,
+      "relation": 1,
+      "id": 537207779,
+      "name": "maikl_nepobedimyj"
+    },
+    {
+      "shipId": 3552491216,
+      "relation": 1,
+      "id": 292470,
+      "name": "charli51"
+    },
+    {
+      "shipId": 4292818736,
+      "relation": 1,
+      "id": 579882,
+      "name": "60026081"
+    },
+    {
+      "shipId": 4282333168,
+      "relation": 2,
+      "id": 537201774,
+      "name": "andron23Volyn"
+    },
+    {
+      "shipId": 3552491216,
+      "relation": 2,
+      "id": 537352445,
+      "name": "SVIST_UA"
+    },
+    {
+      "shipId": 4076746448,
+      "relation": 2,
+      "id": 450755,
+      "name": "luchnikus"
+    },
+    {
+      "shipId": 4181636912,
+      "relation": 2,
+      "id": 537201251,
+      "name": "KOBRA_UA"
+    },
+    {
+      "shipId": 4282333168,
+      "relation": 1,
+      "id": 537433942,
+      "name": "Lauris1000"
+    },
+    {
+      "shipId": 3762206512,
+      "relation": 1,
+      "id": 537290393,
+      "name": "Vintik200"
+    },
+    {
+      "shipId": 4181669680,
+      "relation": 2,
+      "id": 310166,
+      "name": "novichok2011"
+    },
+    {
+      "shipId": 4282365936,
+      "relation": 2,
+      "id": 427466,
+      "name": "Ded_Naum"
+    },
+    {
+      "shipId": 3762206160,
+      "relation": 1,
+      "id": 474078,
+      "name": "simba07"
+    },
+    {
+      "shipId": 3762272240,
+      "relation": 0,
+      "id": 433759,
+      "name": "pachkunishka"
+    }
+  ],
+  "playersPerTeam": 7,
+  "dateTime": "10.01.2018 22:59:38",
+  "mapName": "spaces/15_NE_north",
+  "playerName": "pachkunishka",
+  "scenarioConfigId": 75,
+  "teamsCount": 2,
+  "logic": "Domination",
+  "playerVehicle": "PASA508-Enterprise"
+}

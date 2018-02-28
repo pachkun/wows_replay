@@ -1,0 +1,169 @@
+{
+  "clientVersionFromXml": "0, 7, 1, 319254",
+  "gameMode": 11,
+  "clientVersionFromExe": "0, 7, 1, 319254",
+  "scenarioUiCategoryId": 0,
+  "mapDisplayName": "35_NE_north_winter",
+  "mapId": 21,
+  "matchGroup": "pvp",
+  "weather": "spaces/35_NE_north_winter/weathers.xml",
+  "duration": 1200,
+  "gameLogic": "Domination",
+  "name": "12x12",
+  "scenario": "Domination_2_BASES",
+  "playerID": 0,
+  "vehicles": [
+    {
+      "shipId": 4181636560,
+      "relation": 1,
+      "id": 539961605,
+      "name": "Texniksan_morskoY"
+    },
+    {
+      "shipId": 3752802256,
+      "relation": 2,
+      "id": 540152849,
+      "name": "76Kukish76"
+    },
+    {
+      "shipId": 4182652720,
+      "relation": 2,
+      "id": 540015122,
+      "name": "ayup197933__"
+    },
+    {
+      "shipId": 3552491216,
+      "relation": 2,
+      "id": 3198105,
+      "name": "greschnic"
+    },
+    {
+      "shipId": 4284430032,
+      "relation": 2,
+      "id": 3223454,
+      "name": "oprichnik24"
+    },
+    {
+      "shipId": 4183766832,
+      "relation": 2,
+      "id": 540087071,
+      "name": "KortikSF1"
+    },
+    {
+      "shipId": 4183766992,
+      "relation": 2,
+      "id": 3223457,
+      "name": "TEMIRBACH"
+    },
+    {
+      "shipId": 4183766864,
+      "relation": 0,
+      "id": 3233324,
+      "name": "pachkunishka"
+    },
+    {
+      "shipId": 4182652624,
+      "relation": 1,
+      "id": 540112305,
+      "name": "dimon0303"
+    },
+    {
+      "shipId": 4182652624,
+      "relation": 2,
+      "id": 3166431,
+      "name": "Sergyy_strelok"
+    },
+    {
+      "shipId": 4287543280,
+      "relation": 1,
+      "id": 3314879,
+      "name": "max82828"
+    },
+    {
+      "shipId": 4259264496,
+      "relation": 2,
+      "id": 540016964,
+      "name": "QwarG"
+    },
+    {
+      "shipId": 4181637072,
+      "relation": 1,
+      "id": 3131937,
+      "name": "CronomanN"
+    },
+    {
+      "shipId": 4183734064,
+      "relation": 2,
+      "id": 539963468,
+      "name": "Sana451382"
+    },
+    {
+      "shipId": 4183733712,
+      "relation": 2,
+      "id": 3223628,
+      "name": "Metky_zashhitnik"
+    },
+    {
+      "shipId": 4183766864,
+      "relation": 1,
+      "id": 3089486,
+      "name": "stowerx"
+    },
+    {
+      "shipId": 4255037136,
+      "relation": 2,
+      "id": 3108563,
+      "name": "SKOROBEY_2015"
+    },
+    {
+      "shipId": 4286527472,
+      "relation": 1,
+      "id": 3148125,
+      "name": "RenamedUser_16085095"
+    },
+    {
+      "shipId": 4289607664,
+      "relation": 1,
+      "id": 3163615,
+      "name": "rostovdanuna66666"
+    },
+    {
+      "shipId": 4182718416,
+      "relation": 1,
+      "id": 3055722,
+      "name": "ZHNEC87"
+    },
+    {
+      "shipId": 4285445840,
+      "relation": 1,
+      "id": 540052715,
+      "name": "kvantoboloid"
+    },
+    {
+      "shipId": 3762206160,
+      "relation": 2,
+      "id": 3063792,
+      "name": "kpa1977"
+    },
+    {
+      "shipId": 4183766864,
+      "relation": 1,
+      "id": 3193081,
+      "name": "Firezombi"
+    },
+    {
+      "shipId": 4286494416,
+      "relation": 1,
+      "id": 540135364,
+      "name": "Mudman9000"
+    }
+  ],
+  "playersPerTeam": 12,
+  "dateTime": "25.02.2018 14:29:50",
+  "mapName": "spaces/35_NE_north_winter",
+  "playerName": "pachkunishka",
+  "scenarioConfigId": 168,
+  "teamsCount": 2,
+  "logic": "Domination",
+  "playerVehicle": "PFSB106-Normandie"
+}

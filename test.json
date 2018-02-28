@@ -1,0 +1,153 @@
+{
+  "torps": 68,
+  "ribbons": {
+    "RIBBON_BASE_CAPTURE_ASSIST": 1,
+    "RIBBON_CRIT": 3,
+    "RIBBON_BURN": 3,
+    "RIBBON_TORPEDO": 5,
+    "RIBBON_MAIN_CALIBER_OVER_PENETRATION": 2,
+    "RIBBON_FRAG": 2,
+    "RIBBON_MAIN_CALIBER_PENETRATION": 95,
+    "RIBBON_FLOOD": 4,
+    "RIBBON_MAIN_CALIBER_NO_PENETRATION": 59,
+    "RIBBON_MAIN_CALIBER_RICOCHET": 19,
+    "RIBBON_MAIN_CALIBER": 175,
+    "RIBBON_BASE_DEFENSE": 4
+  },
+  "guns": 430,
+  "sherlok": 8,
+  "players": {
+    "snake19651302": {
+      "clanId": 427138,
+      "clanColor": "#cc9966",
+      "clanTag": "PERUN"
+    },
+    "zhukov_0081_alexandr": {
+      "clanId": 429510,
+      "clanColor": "#cc9966",
+      "clanTag": "TBOC"
+    },
+    "SOBR27rus": {
+      "clanId": 415180,
+      "clanColor": "#b3b3b3",
+      "clanTag": "WAR"
+    },
+    "CuHbKaaa": {
+      "clanId": 421052,
+      "clanColor": "#cce4e4",
+      "clanTag": "SEV92"
+    },
+    "uzspbiv": {
+      "clanId": 426927,
+      "clanColor": "#b3b3b3",
+      "clanTag": "SPUR"
+    },
+    "Pros100_PeREC": {
+      "clanId": 423519,
+      "clanColor": "#cc9966",
+      "clanTag": "OST"
+    },
+    "begimot032": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "mechlit28": {
+      "clanId": 426689,
+      "clanColor": "#cc9966",
+      "clanTag": "HF"
+    },
+    "pachkunishka": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "sveta_varf": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "_golddigger": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "slava211_2015": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "admiral65": {
+      "clanId": 416141,
+      "clanColor": "#b3b3b3",
+      "clanTag": "KRB65"
+    },
+    "stowerx": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "salde": {
+      "clanId": 413702,
+      "clanColor": "#bee7bd",
+      "clanTag": "APP"
+    },
+    "Crazy_Mankei": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "IMaksimI": {
+      "clanId": 425942,
+      "clanColor": "#e3d6a0",
+      "clanTag": "CANGU"
+    },
+    "KGP_": {
+      "clanId": 427961,
+      "clanColor": "#b3b3b3",
+      "clanTag": "PFE"
+    },
+    "AVM_2014": {
+      "clanId": 427002,
+      "clanColor": "#b3b3b3",
+      "clanTag": "EKLMN"
+    },
+    "BblTPE3BUTEJlb": {
+      "clanId": 427731,
+      "clanColor": "#e3d6a0",
+      "clanTag": "GAYS"
+    },
+    "pepel_375": {
+      "clanId": 415190,
+      "clanColor": "#b3b3b3",
+      "clanTag": "S_D"
+    },
+    "Murzzil": {
+      "clanId": 424637,
+      "clanColor": "#cce4e4",
+      "clanTag": "SLON"
+    },
+    "berkut00745": {
+      "clanId": 0,
+      "clanColor": "",
+      "clanTag": ""
+    },
+    "spectre13": {
+      "clanId": 415988,
+      "clanColor": "#cc9966",
+      "clanTag": "KRD"
+    }
+  },
+  "consumablesPrice": 90000,
+  "player_death": -43.24800109863281,
+  "damage": {
+    "DAMAGE_SINK": 11973.096834452812,
+    "DAMAGE_MAIN_HE": 28253.655482272236,
+    "DAMAGE_MAIN_AP": 5550.0,
+    "DAMAGE_SHIP_TORPEDO": 59929.727702372125,
+    "DAMAGE_ALL": 113394.96827227986,
+    "DAMAGE_FIRE": 7688.488253182673
+  },
+  "battle_duration": 1090.8230438232422,
+  "version": "0.7.1.319254"
+}
