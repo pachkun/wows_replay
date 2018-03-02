@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+# TODO env test_sqlite need переделать
+import os
+os.environ['test_sqlite'] = 'sqlite://'
+
 import json
 import unittest
 from datetime import datetime
-from unittest import skip
-
 from BattleInfo import BattleInfo
 from ParserException import HeaderError, ParserError
 from parser_wows_replays import parse_replay
@@ -45,7 +47,7 @@ class TestBattleInfoClass(unittest.TestCase):
         }]}
 
     def setUp(self):
-        with open('./sample/battle_info_rank.json', 'r') as file:
+        with open('./example/battle_info_rank.json', 'r') as file:
             battle_info_json = json.loads(file.read())
         self.battle_info = BattleInfo(battle_info_json)
 
@@ -97,19 +99,19 @@ class TestBattleInfoClass(unittest.TestCase):
         self.assertListEqual(list(battle_info.friend_team_vehicles()), expecting_friend_list)
 
 
-class TestParser(unittest.TestCase):
+class TestWowsParser(unittest.TestCase):
     # TODO доделать
     def test_integration(self):
-        with open('./sample/20180110_225938_PASA508-Enterprise_15_NE_north.wowsreplay', 'rb') as file:
+        with open('./example/20180110_225938_PASA508-Enterprise_15_NE_north.wowsreplay', 'rb') as file:
             battle_info = parse_replay(file)
             self.assertIsInstance(battle_info, BattleInfo)
 
     def test_header_error_for_no_replay_file(self):
-        with open('./sample/cef.log', 'rb') as file:
+        with open('./example/cef.txt', 'rb') as file:
             with self.assertRaises(HeaderError):
                 parse_replay(file)
 
     def test_parser_error_for_bad_json(self):
-        with open('./sample/error_json.wowsreplay', 'rb') as file:
+        with open('./example/error_json.wowsreplay', 'rb') as file:
             with self.assertRaises(ParserError):
                 parse_replay(file)
