@@ -2,17 +2,25 @@
 import logging
 import struct
 import json
+import time
 from io import BytesIO
 from pathlib import Path
 from BattleInfo import BattleInfo
 from ParserException import ParserError, HeaderError, DBError
-from load_maps import insert_maps
-from utils.load_battle import battle_get_or_create
-from utils.load_ships import insert_ships
+from utils import insert_maps_from_wargaming_api, battle_get_or_create, insert_ships_from_wargaming_api
 
 __author__ = 'pachkun'
 
 REPLAY_HEADER = b'\x1224\x11'
+
+
+def how_long(f):
+    def tmp(*args, **kwargs):
+        t = time.time()
+        res = f(*args, **kwargs)
+        logging.info("time request: %f" % (time.time() - t))
+        return res
+    return tmp
 
 
 def parse_replay(file: BytesIO):
@@ -37,25 +45,30 @@ def parse_replay(file: BytesIO):
     return BattleInfo(battle_info)
 
 
+def parser_from_file(file_path: str):
+    with open(file_path, 'rb') as file:
+        try:
+            battle_get_or_create(parse_replay(file))
+            logging.info('Файл %s обработан ', file.name)
+        except HeaderError as err:
+            logging.error('Файл не явлется рееплем world of warships %s , header file %s', file.name, err)
+        except ParserError as err:
+            logging.error('Файл не явлется рееплем world of warships %s , %s', file.name, err)
+        except DBError as err:
+            logging.error('Ошибка вставки в БД %s , %s', file.name, err)
+        except Exception as err:
+            logging.exception('Какая то ошибка world of warships %s , %s', file.name, err)
+
+
+@how_long
 def parse_from_directory(directory_path: str):
     for file_path in Path(directory_path).glob('**/*.wowsreplay'):
-        with open(file_path, 'rb') as file:
-            try:
-                battle_get_or_create(parse_replay(file))
-                logging.info('Файл %s обработан ', file.name)
-            except HeaderError as err:
-                logging.error('Файл не явлется рееплем world of warships %s , header file %s', file.name, err)
-            except ParserError as err:
-                logging.error('Файл не явлется рееплем world of warships %s , %s', file.name, err)
-            except DBError as err:
-                logging.error('Ошибка вставки в БД %s , %s', file.name, err)
-            except Exception as err:
-                logging.exception('Какая то ошибка world of warships %s , %s', file.name, err)
+        parser_from_file(file_path)
 
 
 if __name__ == '__main__':
     path = 'E:\\games\\World_of_Warships\\replays'
-    logging.basicConfig(level=logging.DEBUG)
-    insert_ships()
-    insert_maps()
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
+    insert_ships_from_wargaming_api()
+    insert_maps_from_wargaming_api()
     parse_from_directory(path)

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
-
-from db_model import Map
-from utils import session
+from sqlalchemy.orm import Session
+from db.db_model import Map
+from db import engine
 from wargaming_api import MapInfo, WOWS
 
 __author__ = 'pachkun'
 
 
-def add_map(map_data: MapInfo):
+def add_map(map_data: MapInfo, session: Session) -> None:
     logging.info('add map %s', map_data)
     if session.query(Map).filter_by(map_id=map_data.map_id).first() is not None:
         logging.warning('Такая карта уже существует%s', map_data)
@@ -21,9 +21,9 @@ def add_map(map_data: MapInfo):
     ))
 
 
-def insert_maps() -> None:
+def insert_maps_from_wargaming_api() -> None:
     wows_api = WOWS(application_id='demo')
     map_list = wows_api.maps_list()
-    for map_data in map_list:
-        add_map(map_data)
-    session.commit()
+    with engine.session_scope() as session:
+        for map_data in map_list:
+            add_map(map_data, session)

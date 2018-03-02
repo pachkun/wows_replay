@@ -1,11 +1,6 @@
 # coding=utf-8
-import pathlib
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from utils.db_model import Player, Ship, Shiptype, Nation, Battle, metadata
-from utils.wargaming_api import WOWS, ShipInfo
+from wargaming_api import WOWS, ShipInfo, Players
+from db.load_battle import battle_get_or_create
+from db.load_maps import insert_maps_from_wargaming_api
+from db.load_ships import insert_ships_from_wargaming_api
 
-engine = create_engine('sqlite:///' + pathlib.Path().cwd().joinpath('db/app.db').__str__(), echo=False)
-Session = sessionmaker(bind=engine)
-session = Session()
-metadata.create_all(engine)

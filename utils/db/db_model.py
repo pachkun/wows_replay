@@ -27,7 +27,6 @@ class Nation(Base):
     __tablename__ = 'Nations'
     nation_id = Column(Integer, primary_key=True)
     name = Column(String(64), index=True, unique=True)
-    ships = relationship('Ship', backref='nation', lazy='dynamic')
 
     def __str__(self):
         return f'{self.name}'
@@ -37,7 +36,6 @@ class Shiptype(Base):
     __tablename__ = 'Shiptype'
     ship_type_id = Column(Integer, primary_key=True)
     name = Column(String(64), index=True, unique=True)
-    ships = relationship('Ship', backref='ship_type', lazy='dynamic')
 
     def __str__(self):
         return f'{self.name}'
@@ -53,6 +51,8 @@ class Ship(Base):
     is_special = Column(Boolean)
     nation_id = Column(Integer, ForeignKey('Nations.nation_id'))
     ship_type_id = Column(Integer, ForeignKey('Shiptype.ship_type_id'))
+    ship_type = relationship('Shiptype', backref='ships')
+    nation = relationship('Nation', backref='ships')
 
     def __str__(self):
         return f'Ship:{self.name} - {self.tier}|{self.ship_type}|{self.nation}|' \
@@ -70,6 +70,8 @@ class Battle(Base):
     version = Column(String)
     player_id = Column(Integer, ForeignKey('Players.player_id'))
     player_ship_id = Column(Integer, ForeignKey('Ships.ship_id'))
+    player = relationship('Player', backref='protagonist')
+    ship = relationship('Ship',  backref='protagonist_ship')
 
     def __str__(self):
         return f'{self.battle_uid}'
@@ -82,6 +84,9 @@ class BattleMember(Base):
     ship_id = Column(Integer, ForeignKey('Ships.ship_id'))
     relation = Column(Integer)
     battle_id = Column(Integer, ForeignKey('Battle.battle_id'))
+    player = relationship('Player', backref='battle_member')
+    ship = relationship('Ship',  backref='battle_member_ship')
+    battle = relationship('Battle',  backref='battles')
 
     def __str__(self):
         return f'{self.player_id} {self.relation}'
