@@ -1,0 +1,230 @@
+{
+  "status": "ok",
+  "meta": {
+    "count": 37
+  },
+  "data": {
+    "1": {
+      "description": "Безымянные воды где-то в Атлантике.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/00_CO_ocean_minimap_combined.png",
+      "battle_arena_id": 1,
+      "name": "Океан"
+    },
+    "2": {
+      "description": "Солнечный рай с настоящим вулканом и одновременно важнейший стратегический аэродром в Тихом океане.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/01_solomon_islands_minimap_combined.png",
+      "battle_arena_id": 2,
+      "name": "Соломоновы острова"
+    },
+    "3": {
+      "description": "Острова России в Охотском море.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/04_Archipelago_minimap_combined.png",
+      "battle_arena_id": 3,
+      "name": "Архипелаг"
+    },
+    "4": {
+      "description": "Кольцо гористых островов образует «тихую гавань» в центре карты.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/05_Ring_minimap_combined.png",
+      "battle_arena_id": 4,
+      "name": "Кольцо"
+    },
+    "5": {
+      "description": "Пролив между двумя континентами, содержащий как крупные так и мелкие острова.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/08_NE_passage_minimap_combined.png",
+      "battle_arena_id": 5,
+      "name": "Пролив"
+    },
+    "6": {
+      "description": "Крупный остров и вереница малых островов, разделяют карту на две части.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/10_NE_big_race_minimap_combined.png",
+      "battle_arena_id": 6,
+      "name": "Большая гонка"
+    },
+    "7": {
+      "description": "Новый рассвет в зоне боевых действий.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/13_OC_new_dawn_minimap_combined.png",
+      "battle_arena_id": 7,
+      "name": "Новый рассвет"
+    },
+    "8": {
+      "description": "Прибрежный район Атлантического океана.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/14_Atlantic_minimap_combined.png",
+      "battle_arena_id": 8,
+      "name": "Атлантика"
+    },
+    "9": {
+      "description": "Холодные северные воды. Суровый и жёсткий бой.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/15_NE_north_minimap_combined.png",
+      "battle_arena_id": 9,
+      "name": "Север"
+    },
+    "10": {
+      "description": "Тропические воды где-то в Меланезии.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/16_OC_bees_to_honey_minimap_combined.png",
+      "battle_arena_id": 10,
+      "name": "Край вулканов"
+    },
+    "11": {
+      "description": "Глубокий континентальный разлом скрыт под толщей воды.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/17_NA_fault_line_minimap_combined.png",
+      "battle_arena_id": 11,
+      "name": "Линия разлома"
+    },
+    "12": {
+      "description": "Земля китобоев и охотников. Ледяные айсберги и суровый климат.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/18_NE_ice_islands_minimap_combined.png",
+      "battle_arena_id": 12,
+      "name": "Ледяные острова"
+    },
+    "13": {
+      "description": "Удобная гавань для навигации, и для гибели...",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/19_OC_prey_minimap_combined.png",
+      "battle_arena_id": 13,
+      "name": "Ловушка"
+    },
+    "14": {
+      "description": "Два больших острова, как два брата, делящих между собой карту.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/20_NE_two_brothers_minimap_combined.png",
+      "battle_arena_id": 14,
+      "name": "Два брата"
+    },
+    "15": {
+      "description": "Южные воды Латинской Америки: необычная земля, непростые условия.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/22_tierra_del_fuego_minimap_combined.png",
+      "battle_arena_id": 15,
+      "name": "Огненная земля"
+    },
+    "16": {
+      "description": "Необычно узкие проливы в сочетании с крупными островами.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/23_Shards_minimap_combined.png",
+      "battle_arena_id": 16,
+      "name": "Осколки"
+    },
+    "17": {
+      "description": "Море, где удачно сочетаются многие факторы.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/25_sea_hope_minimap_combined.png",
+      "battle_arena_id": 17,
+      "name": "Море надежды"
+    },
+    "18": {
+      "description": "Где-то в районе Красного моря.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/28_naval_mission_minimap_combined.png",
+      "battle_arena_id": 18,
+      "name": "Слёзы пустыни"
+    },
+    "19": {
+      "description": "Где-то здесь лагерь Нобеля в ледяных объятиях новой земли.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/33_new_tierra_minimap_combined.png",
+      "battle_arena_id": 19,
+      "name": "К полюсу!"
+    },
+    "20": {
+      "description": "Весёлые зелёные острова старой доброй Англии.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/34_OC_islands_minimap_combined.png",
+      "battle_arena_id": 20,
+      "name": "Острова"
+    },
+    "21": {
+      "description": "Сражение продолжается и во время полярной ночи.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/35_NE_north_winter_minimap_combined.png",
+      "battle_arena_id": 21,
+      "name": "Северное сияние"
+    },
+    "22": {
+      "description": "Горный хребет посреди залива.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/37_Ridge_minimap_combined.png",
+      "battle_arena_id": 22,
+      "name": "Горная цепь"
+    },
+    "23": {
+      "description": "Острова Северной Америки, где-то в районе Канады.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/38_Canada_minimap_combined.png",
+      "battle_arena_id": 23,
+      "name": "Раскол"
+    },
+    "24": {
+      "description": "Район ожесточённых сражений Второй мировой войны.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/40_Okinawa_minimap_combined.png",
+      "battle_arena_id": 24,
+      "name": "Окинава"
+    },
+    "25": {
+      "description": "Коварные воды, где Нептун поджидает свою добычу.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/41_Conquest_minimap_combined.png",
+      "battle_arena_id": 25,
+      "name": "Трезубец"
+    },
+    "26": {
+      "description": "Морская граница между Францией и Британией.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/42_Neighbors_minimap_combined.png",
+      "battle_arena_id": 26,
+      "name": "Соседи"
+    },
+    "27": {
+      "description": "Герой всегда идёт своим путём.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/44_Path_warrior_minimap_combined.png",
+      "battle_arena_id": 27,
+      "name": "Путь воина"
+    },
+    "28": {
+      "description": "Расположение островов напоминает петлю. Ловкое управление кораблём даёт преимущество.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/45_Zigzag_minimap_combined.png",
+      "battle_arena_id": 28,
+      "name": "Петля"
+    },
+    "29": {
+      "description": "Устье реки, впадающей в бурное море.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/46_Estuary_minimap_combined.png",
+      "battle_arena_id": 29,
+      "name": "Устье"
+    },
+    "30": {
+      "description": "Сочетание различных путей между островами. Район акватории близ Китая.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/47_Sleeping_Giant_minimap_combined.png",
+      "battle_arena_id": 30,
+      "name": "Спящий гигант"
+    },
+    "31": {
+      "description": "Cеттинг — шотландские скалы, суровый геймплей.",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/50_Gold_harbor_minimap_combined.png",
+      "battle_arena_id": 31,
+      "name": "Гавань"
+    },
+    "33": {
+      "description": "Резкий налёт на базу ВМФ",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s01_NavalBase_minimap_combined.png",
+      "battle_arena_id": 33,
+      "name": "Операция «Косатка»"
+    },
+    "34": {
+      "description": "Защити и не умри!",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s02_Naval_Defense_minimap_combined.png",
+      "battle_arena_id": 34,
+      "name": "Защита базы ВМФ «Ньюпорт»"
+    },
+    "35": {
+      "description": "Средь вод Меланезии",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s03_Labyrinth_minimap_combined.png",
+      "battle_arena_id": 35,
+      "name": "Спасение авианосца «Раптор»"
+    },
+    "36": {
+      "description": "Атолл",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s06_Atoll_minimap_combined.png",
+      "battle_arena_id": 36,
+      "name": "Последний рубеж"
+    },
+    "37": {
+      "description": "Нараи",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s07_Advance_minimap_combined.png",
+      "battle_arena_id": 37,
+      "name": "Операция «Нараи»"
+    },
+    "38": {
+      "description": "Гермес",
+      "icon": "http:\/\/glossary-ru-static.gcdn.co\/icons\/wows\/current\/spaces\/s09_LePVE_minimap_combined.png",
+      "battle_arena_id": 38,
+      "name": "Гермес"
+    }
+  }
+}

@@ -176,16 +176,6 @@ class WOWS:
     def __init__(self, application_id):
         self.application_id = application_id
 
-    def _parse_ship(self, json_data: dict) -> ShipInfo:
-        for ship_id, ship_info in json_data['data'].items():
-            yield ShipInfo(wargaming_ship_id=ship_id,
-                           name=ship_info['name'],
-                           nation=ship_info['nation'],
-                           type=ship_info['type'],
-                           tier=ship_info['tier'],
-                           is_special=ship_info['is_special'],
-                           is_premium=ship_info['is_premium'])
-
     def _request_api(self, url: str, params: dict) -> dict:
         try:
             params['application_id'] = self.application_id
@@ -197,38 +187,55 @@ class WOWS:
         # TODO http code check, json() может вернуть exception
         return response.json()
 
-    def _request_rank_info(self, account_id: int, season_num: int) -> dict:
-        params = dict(
-            account_id=account_id,
-            season_id=season_num
-        )
-        return self._request_api(self.API_URL + self.PLAYER_STAT_IN_RANK_BATTLE, params=params)
-
-    def ships_list(self) -> typing.List[ShipInfo]:
-        ships = []
-        page_num = 1
-        while True:
-            response = self._request_ships_encyclopedia(page_num)
-            ships += list(self._parse_ship(response))
-            if response['meta']['page_total'] == page_num:
-                break
-            page_num += 1
-        module_logger.info('end ships_list count ship %s', len(ships))
-        return ships
-
-    def _request_ships_encyclopedia(self, page_num: int) -> dict:
+    def request_ships_encyclopedia(self, page_num: int) -> dict:
         params = dict(
             fields='is_premium,is_special,name,nation,tier,type',
             page_no=page_num
         )
         return self._request_api(self.API_URL + self.SHIPS_ENCYCLOPEDIA, params=params)
 
-    def _request_maps_encyclopedia(self) -> dict:
+    def parse_ship(self, json_data: dict) -> typing.Generator[ShipInfo, None, None]:
+        for ship_id, ship_info in json_data['data'].items():
+            yield ShipInfo(wargaming_ship_id=ship_id,
+                           name=ship_info['name'],
+                           nation=ship_info['nation'],
+                           type=ship_info['type'],
+                           tier=ship_info['tier'],
+                           is_special=ship_info['is_special'],
+                           is_premium=ship_info['is_premium'])
+
+    def ships_list(self) -> typing.List[ShipInfo]:
+        ships = []
+        page_num = 1
+        while True:
+            response = self.request_ships_encyclopedia(page_num)
+            ships += list(self.parse_ship(response))
+            if response['meta']['page_total'] == page_num:
+                break
+            page_num += 1
+        module_logger.info('end ships_list count ship %s', len(ships))
+        return ships
+
+    def request_maps_encyclopedia(self) -> dict:
         return self._request_api(self.API_URL + self.MAP_ENCYCLOPEDIA, {})
 
+    def parse_map(self, json_data: dict) -> typing.Generator[MapInfo, None, None]:
+        for map_data in json_data['data'].values():
+            yield MapInfo(map_id=map_data['battle_arena_id'],
+                          name=map_data['name'],
+                          icon=map_data['icon'],
+                          description=map_data['description'])
+
     def maps_list(self) -> typing.List[MapInfo]:
-        response = self._request_maps_encyclopedia()
-        return list(self._parse_map(response))
+        response = self.request_maps_encyclopedia()
+        return list(self.parse_map(response))
+
+    def _request_rank_info(self, account_id: int, season_num: int) -> dict:
+        params = dict(
+            account_id=account_id,
+            season_id=season_num
+        )
+        return self._request_api(self.API_URL + self.PLAYER_STAT_IN_RANK_BATTLE, params=params)
 
     @lru_cache(maxsize=200)
     def players(self, name: str) -> typing.Union[int, None]:
@@ -250,10 +257,3 @@ class WOWS:
         rank_info_json = self._request_rank_info(account_id=account_id, season_num=season_num)
         players_seasons_info = rank_info_json['data'][str(account_id)]['seasons'][str(season_num)]
         return Players.from_json(player_name=name, data_json=players_seasons_info)
-
-    def _parse_map(self, json_data: dict) -> MapInfo:
-        for map_data in json_data['data'].values():
-            yield MapInfo(map_id=map_data['battle_arena_id'],
-                          name=map_data['name'],
-                          icon=map_data['icon'],
-                          description=map_data['description'])
