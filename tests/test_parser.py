@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-# TODO env test_sqlite need переделать
-import os
-os.environ['test_sqlite'] = 'sqlite://'
-
 import json
 import unittest
 from datetime import datetime
