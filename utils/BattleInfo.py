@@ -13,6 +13,9 @@ class BattleInfo:
     FRIEND_TEAM = 1
     ENEMY_TEAM = 2
 
+    RANDOM_BATTLE = 'pvp'
+    RANKED_BATTLE = 'ranked'
+
     class Vehicle(NamedTuple):
         ship_id: int
         relation: int
