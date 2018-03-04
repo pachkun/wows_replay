@@ -70,6 +70,8 @@ class Battle(Base):
     version = Column(String)
     player_id = Column(Integer, ForeignKey('Players.player_id'))
     player_ship_id = Column(Integer, ForeignKey('Ships.ship_id'))
+    number_platoon_member = Column(Integer, default=1)
+    max_platoon_tier = Column(Integer)
     player = relationship('Player', backref='protagonist')
     ship = relationship('Ship',  backref='protagonist_ship')
 

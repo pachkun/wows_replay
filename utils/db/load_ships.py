@@ -2,7 +2,7 @@
 import logging
 from sqlalchemy.orm import Session
 from utils import WOWS, ShipInfo
-from db import engine
+from db import InitDB
 from db.db_model import Nation, Ship, Shiptype
 
 __author__ = 'pachkun'
@@ -41,7 +41,7 @@ def ship_type_get_or_create(ship_type: str, session: Session) -> Shiptype:
     return ship_type_id
 
 
-def insert_ships_from_wargaming_api() -> None:
+def insert_ships_from_wargaming_api(engine: InitDB) -> None:
     wows_api = WOWS(application_id='demo')
     ship_list = wows_api.ships_list()
     with engine.session_scope() as session:

@@ -2,7 +2,7 @@
 import logging
 from sqlalchemy.orm import Session
 from db.db_model import Map
-from db import engine
+from db import InitDB
 from wargaming_api import MapInfo, WOWS
 
 __author__ = 'pachkun'
@@ -21,7 +21,7 @@ def add_map(map_data: MapInfo, session: Session) -> None:
     ))
 
 
-def insert_maps_from_wargaming_api() -> None:
+def insert_maps_from_wargaming_api(engine: InitDB) -> None:
     wows_api = WOWS(application_id='demo')
     map_list = wows_api.maps_list()
     with engine.session_scope() as session:
