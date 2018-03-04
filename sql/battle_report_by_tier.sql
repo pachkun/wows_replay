@@ -110,7 +110,7 @@ WITH battle_report AS (
       FROM max_ship_tier_report
       GROUP BY month, ship_id)
 SELECT
-  max_rep.month,
+
   ship.name,
   max_rep.max_enemy_tier                                 AS max_enemy_tier,
   count()                                                AS count_battle,
@@ -122,7 +122,7 @@ FROM max_ship_tier_report max_rep
    FROM battle_count_by_ship) AS count_battle_on_tier
     ON count_battle_on_tier.month = max_rep.month AND count_battle_on_tier.ship_id = max_rep.ship_id
   JOIN Ships ship ON max_rep.ship_id = ship.ship_id
-WHERE max_rep.month > '2017-10' AND ship.name = 'Normandie'
-GROUP BY max_rep.month, max_rep.ship_id, max_rep.max_enemy_tier
-ORDER BY max_rep.month, max_rep.max_enemy_tier;
+WHERE max_rep.month > '2017-10' AND ship.name = 'Lyon'
+GROUP BY  max_rep.ship_id, max_rep.max_enemy_tier
+ORDER BY  max_rep.max_enemy_tier;
 

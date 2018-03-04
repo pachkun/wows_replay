@@ -38,3 +38,11 @@ FROM BattleMembers b
 GROUP BY b.player_id
 HAVING count(*)> 5
 ORDER BY 2 desc;
+--
+SELECT P.nickname, S.name
+FROM Battle b
+JOIN BattleMembers Member ON b.battle_id = Member.battle_id
+JOIN Ships S ON Member.ship_id = S.ship_id
+  JOIN Players P ON Member.player_id = P.player_id
+WHERE Member.relation IN (1, 0) AND 
+  b.battle_id = 3210
