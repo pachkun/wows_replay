@@ -72,11 +72,15 @@ class Battle(Base):
     player_ship_id = Column(Integer, ForeignKey('Ships.ship_id'))
     number_platoon_member = Column(Integer, default=1)
     max_platoon_tier = Column(Integer)
+    matchmaking_level = Column(Integer)
     player = relationship('Player', backref='protagonist')
     ship = relationship('Ship',  backref='protagonist_ship')
 
     def __str__(self):
         return f'{self.battle_uid}'
+
+    def __repr__(self):
+        return f'{self.battle_uid} {self.matchmaking_level}'
 
 
 class BattleMember(Base):

@@ -77,5 +77,6 @@ if __name__ == '__main__':
 
     insert_ships_from_wargaming_api(db)
     insert_maps_from_wargaming_api(db)
-    assist_function.update_platoon_info()
+    assist_function.update_matchmaker_level()
+    assist_function.update_number_of_platoon_member()
     parse_from_directory(path, db)

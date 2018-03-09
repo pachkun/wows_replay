@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
 from pathlib import Path
-
-from sqlalchemy import desc
-
+from sqlalchemy import desc, over, func
 from db import InitDB
 from BattleInfo import BattleInfo
+from db.db_model import Player, Battle
 from db.support import AssistFunction
 
 __author__ = 'pachkun'
@@ -17,19 +16,20 @@ class TestAssistFunction(unittest.TestCase):
         self.engine = InitDB('sqlite:///' + Path().cwd().joinpath('example//test_db/app.db').__str__())
         self.assist_function = AssistFunction(self.engine)
 
-        self.battle_pvp_count_in_test_db = 3248
-        self.battle_count_in_test_db = 3308
+        self.battle_pvp_count_in_test_db = 3267
+        self.battle_count_in_test_db = 3327
+        self.first_battle_id = 1
 
         self.pachkunishka_id = 1
-        self.number_of_pachkun_battle = 3308
+        self.number_of_pachkun_battle = 3327
         self.stowerx_id = 12
-        self.number_of_stowerx_battle = 2791
+        self.number_of_stowerx_battle = 2806
         self.firezombi_id = 265
-        self.number_of_firezombi_battle = 1933
+        self.number_of_firezombi_battle = 1942
         self.fallencrusade_id = 482
 
     def test_count_of_all_battles(self):
-        self.assertEqual(self.assist_function.count_of_all_battles(), self.battle_count_in_test_db)
+        self.assertEqual(self.battle_count_in_test_db, self.assist_function.count_of_all_battles())
 
     def test_number_of_battle_by_player(self):
         expect_first_three = [(self.pachkunishka_id, self.number_of_pachkun_battle),
@@ -37,27 +37,33 @@ class TestAssistFunction(unittest.TestCase):
                               (self.firezombi_id, self.number_of_firezombi_battle)]
         result = self.assist_function.group_by_number_player_battles([BattleInfo.PROTAGONIST, BattleInfo.FRIEND_TEAM],
                                                                      sort=desc)
-        self.assertListEqual(result[:3], expect_first_three)
+        self.assertListEqual(expect_first_three, result[:3])
 
     def test_platoon_member(self):
         expect_platoon_member = [self.fallencrusade_id, self.firezombi_id, self.stowerx_id, self.pachkunishka_id]
         self.assertListEqual(self.assist_function.platoon_member(), expect_platoon_member)
 
-    def test_list_platoon_battles(self):
-        expect_result = [
-            # взвод из двух
-            {'battle_id': 3290, 'count': 2, 'max_tier': 10},
-            # взод из 3 игроков, два на 7 уровне 1 на 6 уровне
-            {'battle_id': 3297, 'count': 3, 'max_tier': 7},
-            # без взвода
-            {'battle_id': 3210, 'count': 1, 'max_tier': 8}, ]
+    def test_update_number_of_platoon_member(self):
+        with self.engine.session_scope() as session:
+            session.query(Battle).filter(Battle.battle_id == self.first_battle_id) \
+                .update({'number_platoon_member': 0, 'max_platoon_tier': 0})
 
-        result = self.assist_function.list_platoon_battle()
+        self.assist_function.update_number_of_platoon_member()
 
-        self.assertEqual(len(result), self.battle_pvp_count_in_test_db)
-        for expect in expect_result:
-            self.assertTrue(expect in result)
+        with self.engine.session_scope() as session:
+            result = session.query(Battle).filter(Battle.battle_id == 1).first()  # type: Battle
+            session.expunge_all()
+        self.assertEqual(5, result.max_platoon_tier)
+        self.assertEqual(2, result.number_platoon_member)
 
-    def test_update_platoon_info(self):
-        # TODO дополнить тест
-        self.assertEqual(self.assist_function.update_platoon_info(), self.battle_pvp_count_in_test_db)
+    def test_update_matchmaker_level(self):
+        with self.engine.session_scope() as session:
+            session.query(Battle).filter(Battle.battle_id == self.first_battle_id) \
+                .update({'matchmaking_level': 0})
+
+        self.assist_function.update_matchmaker_level()
+
+        with self.engine.session_scope() as session:
+            result = session.query(Battle).filter(Battle.battle_id == 1).first()  # type: Battle
+            session.expunge_all()
+        self.assertEqual(7, result.matchmaking_level)

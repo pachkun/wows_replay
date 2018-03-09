@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import List, Tuple, Callable
+from typing import List, Tuple, Callable, Generator
 
 from sqlalchemy import func, desc, asc
 
@@ -34,21 +34,24 @@ class AssistFunction:
                                     relation=[BattleInfo.FRIEND_TEAM, BattleInfo.PROTAGONIST]))
         return [x[0] for x in platoon_member]
 
-    def list_platoon_battle(self) -> List[dict]:
+    def update_number_of_platoon_member(self):
         with self.engine.session_scope() as session:
-            result = session.query(Battle.battle_id, func.count(Battle.battle_id), func.max(Ship.tier)) \
-                .join(BattleMember, BattleMember.battle_id == Battle.battle_id) \
-                .join(Ship, BattleMember.ship_id == Ship.ship_id) \
+            result = session.query(Battle, func.count(Battle.battle_id), func.max(Ship.tier)) \
+                .join(BattleMember) \
+                .join(Ship) \
                 .filter(BattleMember.relation.in_([BattleInfo.FRIEND_TEAM, BattleInfo.PROTAGONIST])) \
                 .filter(BattleMember.player_id.in_(self.platoon_member())) \
                 .filter(Battle.type == BattleInfo.RANDOM_BATTLE) \
                 .group_by(Battle.battle_id)
-        return [dict(battle_id=x[0], count=x[1], max_tier=x[2]) for x in result]
+            for battle in result:
+                battle[0].number_platoon_member = battle[1]
+                battle[0].max_platoon_tier = battle[2]
 
-    def update_platoon_info(self) -> int:
-        update_row = 0
+    def update_matchmaker_level(self):
         with self.engine.session_scope() as session:
-            for battle in self.list_platoon_battle():
-                update_row += session.query(Battle).filter(Battle.battle_id == battle['battle_id']) \
-                    .update({'number_platoon_member': battle['count'], 'max_platoon_tier': battle['max_tier']})
-        return update_row
+            result = session.query(Battle, func.max(Ship.tier)) \
+                .join(BattleMember) \
+                .join(Ship) \
+                .group_by(Battle.battle_id)
+            for battle in result:
+                battle[0].matchmaking_level = battle[1]
