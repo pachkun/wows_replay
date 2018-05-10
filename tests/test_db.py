@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
 from pathlib import Path
-from sqlalchemy import desc, over, func
+from sqlalchemy import desc
 from db import InitDB
 from BattleInfo import BattleInfo
-from db.db_model import Player, Battle
+from db.db_model import Battle
 from db.support import AssistFunction
 
 __author__ = 'pachkun'

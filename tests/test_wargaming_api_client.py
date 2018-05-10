@@ -33,7 +33,7 @@ class WargamingAPIClient(unittest.TestCase):
         self.assertEqual(result.map_id, battle_arena_id)
         self.assertEqual(result.icon, icon)
         self.assertEqual(result.name, name)
-        self.assertEqual(result.icon, icon)
+        self.assertEqual(result.description, description)
 
     @patch("wargaming_api.WOWS._request_api")
     def test_receive_maps(self, mock_response):

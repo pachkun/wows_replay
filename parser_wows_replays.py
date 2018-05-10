@@ -3,8 +3,8 @@ import logging
 import struct
 import json
 import time
-from io import BytesIO
 from pathlib import Path
+from typing import BinaryIO
 from BattleInfo import BattleInfo
 from ParserException import ParserError, HeaderError, DBError
 from db import InitDB
@@ -26,7 +26,7 @@ def how_long(f):
     return tmp
 
 
-def parse_replay(file: BytesIO):
+def parse_replay(file: BinaryIO):
     def battle_info_block(handle) -> dict:
         (json_block_size,) = struct.unpack("I", handle.read(4))
         try:
@@ -48,7 +48,7 @@ def parse_replay(file: BytesIO):
     return BattleInfo(battle_info)
 
 
-def parser_from_file(file_path: str, engine: InitDB):
+def parser_from_file(file_path: Path, engine: InitDB):
     with open(file_path, 'rb') as file:
         try:
             battle_get_or_create(parse_replay(file), engine)
@@ -77,6 +77,8 @@ if __name__ == '__main__':
 
     insert_ships_from_wargaming_api(db)
     insert_maps_from_wargaming_api(db)
+
+    parse_from_directory(path, db)
+
     assist_function.update_matchmaker_level()
     assist_function.update_number_of_platoon_member()
-    parse_from_directory(path, db)
