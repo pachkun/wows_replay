@@ -64,7 +64,7 @@ class TestBattleInfoClass(unittest.TestCase):
         self.assertEqual(self.battle_info.map_id, 9)
 
     def test_game_mode(self):
-        self.assertEqual(self.battle_info.mode, 'Domination')
+        self.assertEqual(self.battle_info.mode, 'Ranked_Domination')
 
     def test_player_ship_id(self):
         self.assertEqual(self.battle_info.player_ship_id, 3762272240)

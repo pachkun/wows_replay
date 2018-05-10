@@ -79,7 +79,7 @@ class BattleInfo:
     # где полный списко взять фиг знает, всякие доминирование превосходства и т.п.
     @property
     def mode(self) -> str:
-        return self.battle_info['logic']
+        return self.battle_info['scenario']
 
     @property
     def player_ship_id(self) -> int:
