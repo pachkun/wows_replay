@@ -1,6 +1,7 @@
 # coding=utf-8
 from contextlib import contextmanager
 from sqlalchemy import create_engine
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker, Session
 from db.db_model import metadata
 
@@ -19,7 +20,7 @@ class InitDB:
         try:
             yield session
             session.commit()
-        except:
+        except SQLAlchemyError:
             session.rollback()
             raise
         finally:

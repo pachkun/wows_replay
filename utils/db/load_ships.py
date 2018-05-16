@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
 from sqlalchemy.orm import Session
-from utils import WOWS, ShipInfo
+from wows_api import WOWS
+from wows_api.wargaming_api import ShipInfo
 from db import InitDB
 from db.db_model import Nation, Ship, Shiptype
 

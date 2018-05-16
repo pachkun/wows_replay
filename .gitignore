@@ -11,6 +11,7 @@
 [Ss]cripts
 pyvenv.cfg
 .venv
+venv
 pip-selfcheck.json
 ### Python template
 # Byte-compiled / optimized / DLL files
@@ -22,7 +23,6 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.Python
 build/
 develop-eggs/
 dist/
@@ -98,7 +98,6 @@ celerybeat-schedule
 
 # Environments
 .env
-.venv
 env/
 venv/
 ENV/
@@ -221,3 +220,4 @@ $RECYCLE.BIN/
 
 /db/
 .idea/
+/tests/.pytest_cache/

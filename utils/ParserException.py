@@ -2,10 +2,13 @@
 __author__ = 'pachkun'
 
 
-class HeaderError(Exception): pass
+class HeaderError(Exception):
+    pass
 
 
-class ParserError(Exception): pass
+class ParserError(Exception):
+    pass
 
 
-class DBError(Exception): pass
+class DBError(Exception):
+    pass

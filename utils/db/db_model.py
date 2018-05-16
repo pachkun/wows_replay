@@ -74,7 +74,7 @@ class Battle(Base):
     max_platoon_tier = Column(Integer)
     matchmaking_level = Column(Integer)
     player = relationship('Player', backref='protagonist')
-    ship = relationship('Ship',  backref='protagonist_ship')
+    ship = relationship('Ship', backref='protagonist_ship')
 
     def __str__(self):
         return f'{self.battle_uid}'
@@ -91,8 +91,8 @@ class BattleMember(Base):
     relation = Column(Integer)
     battle_id = Column(Integer, ForeignKey('Battle.battle_id'))
     player = relationship('Player', backref='battle_member')
-    ship = relationship('Ship',  backref='battle_member_ship')
-    battle = relationship('Battle',  backref='battles')
+    ship = relationship('Ship', backref='battle_member_ship')
+    battle = relationship('Battle', backref='battles')
 
     def __str__(self):
         return f'{self.player_id} {self.relation}'

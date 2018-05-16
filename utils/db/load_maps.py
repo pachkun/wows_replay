@@ -3,7 +3,8 @@ import logging
 from sqlalchemy.orm import Session
 from db.db_model import Map
 from db import InitDB
-from wargaming_api import MapInfo, WOWS
+from wows_api import WOWS
+from wows_api.wargaming_api import MapInfo
 
 __author__ = 'pachkun'
 

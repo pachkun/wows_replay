@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from typing import List, Tuple, Callable, Generator
+from typing import List, Tuple, Callable
 
-from sqlalchemy import func, desc, asc
+from sqlalchemy import func, asc
 
 from BattleInfo import BattleInfo
 from db import InitDB
