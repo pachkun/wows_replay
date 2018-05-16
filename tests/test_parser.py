@@ -105,7 +105,7 @@ class TestWowsParser(unittest.TestCase):
             battle_info = parse_replay(file)
             self.assertIsInstance(battle_info, BattleInfo)
 
-    def test_header_error_for_no_replay_file(self):
+    def test_header_error_for_not_replay_file(self):
         with open(TEST_DATE_DIRECTORY.joinpath('example/cef.txt'), 'rb') as file:
             with self.assertRaises(HeaderError):
                 parse_replay(file)
@@ -114,3 +114,4 @@ class TestWowsParser(unittest.TestCase):
         with open(TEST_DATE_DIRECTORY.joinpath('example/error_json.wowsreplay'), 'rb') as file:
             with self.assertRaises(ParserError):
                 parse_replay(file)
+
