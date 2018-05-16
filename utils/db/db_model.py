@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
@@ -104,3 +105,14 @@ class Map(Base):
     name = Column(String)
     description = Column(String)
     icon = Column(String)
+
+
+class Properties(Base):
+    __tablename__ = 'Properties'
+    properties_id = Column(Integer, primary_key=True)
+    name = Column(String(64), unique=True)
+    value = Column(String)
+    comment = Column(String)
+
+    def __str__(self):
+        return f'{self.name} {self.value}'

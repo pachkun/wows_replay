@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-from typing import List, Tuple, Callable
+from datetime import datetime
+from typing import List, Tuple, Callable, Optional
 from sqlalchemy import func, asc
+from sqlalchemy.orm import Session
+
 from ..BattleInfo import BattleInfo
 from . import InitDB
-from .db_model import Battle, BattleMember, Ship
+from .db_model import Battle, BattleMember, Ship, Properties
 
 __author__ = 'pachkun'
 
@@ -53,3 +56,36 @@ class AssistFunction:
                 .group_by(Battle.battle_id)
             for battle in result:
                 battle[0].matchmaking_level = battle[1]
+
+
+class AppProperties:
+    LAST_UPDATE_DATE = 'last_update_date'
+    LAST_UPDATE_DATE_INIT_VALUE = datetime(year=1971, month=1, day=1)
+
+    def __init__(self, engine: InitDB):
+        self.engine = engine
+
+    def init_property(self):
+        with self.engine.session_scope() as session:  # type: Session
+            if self.last_update_date is None:
+                last_update_date = Properties(name=self.LAST_UPDATE_DATE,
+                                              value=str(self.LAST_UPDATE_DATE_INIT_VALUE.timestamp()),
+                                              comment='POSIX timestamp')
+                session.add(
+                    last_update_date)
+
+    @property
+    def last_update_date(self) -> Optional[datetime]:
+        with self.engine.session_scope() as session:  # type: Session
+            last_update_date = session.query(Properties).filter_by(
+                name=self.LAST_UPDATE_DATE).first()  # type: Properties
+            if last_update_date is None:
+                return None
+            return datetime.fromtimestamp(float(last_update_date.value))
+
+    @last_update_date.setter
+    def last_update_date(self, last_update_date: datetime):
+        with self.engine.session_scope() as session:  # type: Session
+            result = session.query(Properties).filter_by(name=self.LAST_UPDATE_DATE).first()  # type: Properties
+            result.value = last_update_date.timestamp()
+

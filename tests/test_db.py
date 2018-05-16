@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import unittest
+from datetime import datetime
+
+import pytest
 from sqlalchemy import desc
 from utils.db import InitDB
 from utils.BattleInfo import BattleInfo
 from utils.db.db_model import Battle
-from utils.db.support import AssistFunction
+from utils.db.support import AssistFunction, AppProperties
 from tests import TEST_DATE_DIRECTORY
 
 __author__ = 'pachkun'
@@ -67,3 +70,18 @@ class TestAssistFunction(unittest.TestCase):
             result = session.query(Battle).filter(Battle.battle_id == 1).first()  # type: Battle
             session.expunge_all()
         self.assertEqual(7, result.matchmaking_level)
+
+
+@pytest.fixture()
+def app_propeties():
+    engine = InitDB('sqlite:///')
+    return AppProperties(engine)
+
+
+def test_last_update_date(app_propeties: AppProperties):
+    assert app_propeties.last_update_date is None, 'таблица пуста'
+    app_propeties.init_property()
+    assert app_propeties.last_update_date == app_propeties.LAST_UPDATE_DATE_INIT_VALUE, 'инициализация и чтения'
+    test_date = datetime(year=2019, month=4, day=29, hour=23, minute=31, second=1)
+    app_propeties.last_update_date = test_date
+    assert app_propeties.last_update_date == test_date, 'запись и чтение'
