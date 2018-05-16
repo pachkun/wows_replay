@@ -79,7 +79,9 @@ def parse_from_directory(directory_path: str, engine: InitDB, last_updated_date:
     start_parsing_date = datetime.now()
     for file_path in Path(directory_path).glob('**/*.wowsreplay'):
         if file_path.is_file():
-            creation_file_date = datetime.fromtimestamp(file_path.stat().st_ctime)
-            if last_updated_date is None or creation_file_date >= last_updated_date:
+            # изначально было дата создания файлов,
+            # но на деле у всех реплеев дата создания реплея = дате и времени старта клиента
+            modification_file_date = datetime.fromtimestamp(file_path.stat().st_mtime)
+            if last_updated_date is None or modification_file_date >= last_updated_date:
                 parser_from_file(file_path, engine)
     return start_parsing_date

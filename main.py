@@ -20,6 +20,7 @@ if __name__ == '__main__':
     insert_maps_from_wargaming_api(db)
 
     update_date = parse_from_directory(path, db, last_updated_date=app_properties.last_update_date)
+    logging.info('дата и время запуска парсинга %s', update_date)
     app_properties.last_update_date = update_date
 
     assist_function.update_matchmaker_level()
