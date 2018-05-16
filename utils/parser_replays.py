@@ -3,6 +3,7 @@ import logging
 import struct
 import json
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import BinaryIO
 from .db.load_battle import battle_get_or_create
@@ -66,6 +67,19 @@ def parser_from_file(file_path: Path, engine: InitDB):
 
 
 @how_long
-def parse_from_directory(directory_path: str, engine: InitDB):
+def parse_from_directory(directory_path: str, engine: InitDB, last_updated_date: datetime = None) -> datetime:
+    """
+    Парсинг реплеев из каталога
+    :param directory_path: путь к папке с файлами реплеев
+    :param engine: движок БД
+    :param last_updated_date: дата и время последнего загруженного реплея от которой парсить
+            (если не заполнена перебирает все файлы)
+    :return: Дата и время загрузки реплеев
+    """
+    start_parsing_date = datetime.now()
     for file_path in Path(directory_path).glob('**/*.wowsreplay'):
-        parser_from_file(file_path, engine)
+        if file_path.is_file():
+            creation_file_date = datetime.fromtimestamp(file_path.stat().st_ctime)
+            if last_updated_date is None or creation_file_date >= last_updated_date:
+                parser_from_file(file_path, engine)
+    return start_parsing_date
