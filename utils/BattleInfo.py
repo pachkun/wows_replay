@@ -2,8 +2,7 @@
 import hashlib
 from typing import NamedTuple, List, Generator
 from datetime import datetime
-
-from ParserException import ParserError
+from .ParserException import ParserError
 
 __author__ = 'pachkun'
 

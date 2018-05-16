@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 from typing import List, Tuple, Callable
-
 from sqlalchemy import func, asc
-
-from BattleInfo import BattleInfo
-from db import InitDB
-from db.db_model import Battle, BattleMember, Ship
+from ..BattleInfo import BattleInfo
+from . import InitDB
+from .db_model import Battle, BattleMember, Ship
 
 __author__ = 'pachkun'
 

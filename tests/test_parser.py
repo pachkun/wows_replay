@@ -2,9 +2,11 @@
 import json
 import unittest
 from datetime import datetime
-from BattleInfo import BattleInfo
-from ParserException import HeaderError, ParserError
-from parser_wows_replays import parse_replay
+
+from utils.parser_replays import parse_replay
+from utils.BattleInfo import BattleInfo
+from utils.ParserException import HeaderError, ParserError
+from tests import TEST_DATE_DIRECTORY
 
 __author__ = 'pachkun'
 
@@ -43,7 +45,7 @@ class TestBattleInfoClass(unittest.TestCase):
         }]}
 
     def setUp(self):
-        with open('./example/battle_info_rank.json', 'r') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/battle_info_rank.json'), 'r') as file:
             battle_info_json = json.loads(file.read())
         self.battle_info = BattleInfo(battle_info_json)
 
@@ -98,16 +100,17 @@ class TestBattleInfoClass(unittest.TestCase):
 class TestWowsParser(unittest.TestCase):
     # TODO доделать
     def test_integration(self):
-        with open('./example/20180110_225938_PASA508-Enterprise_15_NE_north.wowsreplay', 'rb') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/20180110_225938_PASA508-Enterprise_15_NE_north.wowsreplay'),
+                  'rb') as file:
             battle_info = parse_replay(file)
             self.assertIsInstance(battle_info, BattleInfo)
 
     def test_header_error_for_no_replay_file(self):
-        with open('./example/cef.txt', 'rb') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/cef.txt'), 'rb') as file:
             with self.assertRaises(HeaderError):
                 parse_replay(file)
 
     def test_parser_error_for_bad_json(self):
-        with open('./example/error_json.wowsreplay', 'rb') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/error_json.wowsreplay'), 'rb') as file:
             with self.assertRaises(ParserError):
                 parse_replay(file)

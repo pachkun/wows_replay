@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from functools import lru_cache
-from BattleInfo import BattleInfo
-from ParserException import DBError
-from db import InitDB
-from db.db_model import BattleMember, Player, Battle, Ship
+from ..BattleInfo import BattleInfo
+from ..ParserException import DBError
+from . import InitDB
+from .db_model import BattleMember, Player, Battle, Ship
 
 __author__ = 'pachkun'
 

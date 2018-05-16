@@ -3,8 +3,8 @@ import logging
 from sqlalchemy.orm import Session
 from wows_api import WOWS
 from wows_api.wargaming_api import ShipInfo
-from db import InitDB
-from db.db_model import Nation, Ship, Shiptype
+from . import InitDB
+from .db_model import Nation, Ship, Shiptype
 
 __author__ = 'pachkun'
 module_logger = logging.getLogger(__name__)

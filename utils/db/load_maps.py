@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
 from sqlalchemy.orm import Session
-from db.db_model import Map
-from db import InitDB
+from .db_model import Map
+from . import InitDB
 from wows_api import WOWS
 from wows_api.wargaming_api import MapInfo
 

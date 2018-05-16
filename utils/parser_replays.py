@@ -5,11 +5,11 @@ import json
 import time
 from pathlib import Path
 from typing import BinaryIO
-from BattleInfo import BattleInfo
-from ParserException import ParserError, HeaderError, DBError
-from db import InitDB
-from db.support import AssistFunction
-from utils import insert_maps_from_wargaming_api, battle_get_or_create, insert_ships_from_wargaming_api
+from .db.load_battle import battle_get_or_create
+from .BattleInfo import BattleInfo
+from .ParserException import ParserError, HeaderError, DBError
+from .db import InitDB
+
 
 __author__ = 'pachkun'
 
@@ -41,6 +41,8 @@ def parse_replay(file: BinaryIO):
 
     # видимо количестов блоков, теперь всегда = 1
     (block_count,) = struct.unpack("I", file.read(4))
+    if block_count > 1:
+        raise ParserError('формат файла реплея изменен')
 
     # информация о составе команд
     battle_info = battle_info_block(file)
@@ -67,18 +69,3 @@ def parser_from_file(file_path: Path, engine: InitDB):
 def parse_from_directory(directory_path: str, engine: InitDB):
     for file_path in Path(directory_path).glob('**/*.wowsreplay'):
         parser_from_file(file_path, engine)
-
-
-if __name__ == '__main__':
-    path = 'E:\\games\\World_of_Warships\\replays'
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
-    db = InitDB('sqlite:///' + Path().cwd().joinpath('db/app.db').__str__())
-    assist_function = AssistFunction(db)
-
-    insert_ships_from_wargaming_api(db)
-    insert_maps_from_wargaming_api(db)
-
-    parse_from_directory(path, db)
-
-    assist_function.update_matchmaker_level()
-    assist_function.update_number_of_platoon_member()

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import unittest
-from pathlib import Path
 from sqlalchemy import desc
-from db import InitDB
-from BattleInfo import BattleInfo
-from db.db_model import Battle
-from db.support import AssistFunction
+from utils.db import InitDB
+from utils.BattleInfo import BattleInfo
+from utils.db.db_model import Battle
+from utils.db.support import AssistFunction
+from tests import TEST_DATE_DIRECTORY
 
 __author__ = 'pachkun'
 
@@ -13,7 +13,7 @@ __author__ = 'pachkun'
 class TestAssistFunction(unittest.TestCase):
 
     def setUp(self):
-        self.engine = InitDB('sqlite:///' + Path().cwd().joinpath('example//test_db/app.db').__str__())
+        self.engine = InitDB('sqlite:///' + TEST_DATE_DIRECTORY.joinpath('example//test_db/app.db').__str__())
         self.assist_function = AssistFunction(self.engine)
 
         self.battle_pvp_count_in_test_db = 3267
