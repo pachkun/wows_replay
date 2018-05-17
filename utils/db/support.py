@@ -59,7 +59,7 @@ class AssistFunction:
 
 
 class AppProperties:
-    LAST_UPDATE_DATE = 'last_update_date'
+    LAST_UPDATE_DATE = 'last_updated_date_of_relpays'
     LAST_UPDATE_DATE_INIT_VALUE = datetime(year=1971, month=1, day=1)
 
     def __init__(self, engine: InitDB):
@@ -67,7 +67,7 @@ class AppProperties:
 
     def init_property(self):
         with self.engine.session_scope() as session:  # type: Session
-            if self.last_update_date is None:
+            if self.last_updated_date_of_relpays is None:
                 last_update_date = Properties(name=self.LAST_UPDATE_DATE,
                                               value=str(self.LAST_UPDATE_DATE_INIT_VALUE.timestamp()),
                                               comment='POSIX timestamp')
@@ -75,7 +75,7 @@ class AppProperties:
                     last_update_date)
 
     @property
-    def last_update_date(self) -> Optional[datetime]:
+    def last_updated_date_of_relpays(self) -> Optional[datetime]:
         with self.engine.session_scope() as session:  # type: Session
             last_update_date = session.query(Properties).filter_by(
                 name=self.LAST_UPDATE_DATE).first()  # type: Properties
@@ -83,8 +83,8 @@ class AppProperties:
                 return None
             return datetime.fromtimestamp(float(last_update_date.value))
 
-    @last_update_date.setter
-    def last_update_date(self, last_update_date: datetime):
+    @last_updated_date_of_relpays.setter
+    def last_updated_date_of_relpays(self, last_update_date: datetime):
         with self.engine.session_scope() as session:  # type: Session
             result = session.query(Properties).filter_by(name=self.LAST_UPDATE_DATE).first()  # type: Properties
             result.value = last_update_date.timestamp()

@@ -21,7 +21,7 @@ def how_long(f):
     def tmp(*args, **kwargs):
         t = time.time()
         res = f(*args, **kwargs)
-        logging.info("time request: %f" % (time.time() - t))
+        logging.info("время выполнения : %f" % (time.time() - t))
         return res
 
     return tmp
@@ -67,16 +67,14 @@ def parser_from_file(file_path: Path, engine: InitDB):
 
 
 @how_long
-def parse_from_directory(directory_path: str, engine: InitDB, last_updated_date: datetime = None) -> datetime:
+def parse_from_directory(directory_path: str, engine: InitDB, last_updated_date: datetime = None):
     """
     Парсинг реплеев из каталога
     :param directory_path: путь к папке с файлами реплеев
     :param engine: движок БД
     :param last_updated_date: дата и время последнего загруженного реплея от которой парсить
             (если не заполнена перебирает все файлы)
-    :return: Дата и время загрузки реплеев
     """
-    start_parsing_date = datetime.now()
     for file_path in Path(directory_path).glob('**/*.wowsreplay'):
         if file_path.is_file():
             # изначально было дата создания файлов,
@@ -84,4 +82,3 @@ def parse_from_directory(directory_path: str, engine: InitDB, last_updated_date:
             modification_file_date = datetime.fromtimestamp(file_path.stat().st_mtime)
             if last_updated_date is None or modification_file_date >= last_updated_date:
                 parser_from_file(file_path, engine)
-    return start_parsing_date

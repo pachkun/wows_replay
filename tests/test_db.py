@@ -79,9 +79,9 @@ def app_propeties():
 
 
 def test_last_update_date(app_propeties: AppProperties):
-    assert app_propeties.last_update_date is None, 'таблица пуста'
+    assert app_propeties.last_updated_date_of_relpays is None, 'таблица пуста'
     app_propeties.init_property()
-    assert app_propeties.last_update_date == app_propeties.LAST_UPDATE_DATE_INIT_VALUE, 'инициализация и чтения'
+    assert app_propeties.last_updated_date_of_relpays == app_propeties.LAST_UPDATE_DATE_INIT_VALUE, 'инициализация и чтения'
     test_date = datetime(year=2019, month=4, day=29, hour=23, minute=31, second=1)
-    app_propeties.last_update_date = test_date
-    assert app_propeties.last_update_date == test_date, 'запись и чтение'
+    app_propeties.last_updated_date_of_relpays = test_date
+    assert app_propeties.last_updated_date_of_relpays == test_date, 'запись и чтение'
