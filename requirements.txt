@@ -1,3 +1,4 @@
 SQLAlchemy
 pytest
 wows_api
+wxPython
