@@ -3,9 +3,9 @@ import json
 import unittest
 from datetime import datetime
 
-from utils.parser_replays import parse_replay
-from utils.BattleInfo import BattleInfo
-from utils.ParserException import HeaderError, ParserError
+from app.parser_replays import parse_replay
+from app.BattleInfo import BattleInfo
+from app.ParserException import HeaderError, ParserError
 from tests import TEST_DATE_DIRECTORY
 
 __author__ = 'pachkun'

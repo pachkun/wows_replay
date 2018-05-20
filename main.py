@@ -4,11 +4,11 @@ from datetime import datetime
 from pathlib import Path
 import wx
 from main_form import MainForm
-from utils.db import InitDB
-from utils.db.load_maps import insert_maps_from_wargaming_api
-from utils.db.load_ships import insert_ships_from_wargaming_api
-from utils.db.support import AssistFunction, AppProperties
-from utils.parser_replays import parse_from_directory
+from app.db import InitDB
+from app.db.load_maps import insert_maps_from_wargaming_api
+from app.db.load_ships import insert_ships_from_wargaming_api
+from app.db.support import AssistFunction, AppProperties
+from app.parser_replays import parse_from_directory
 
 logger = logging.getLogger('main')
 

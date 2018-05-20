@@ -4,10 +4,10 @@ from datetime import datetime
 
 import pytest
 from sqlalchemy import desc
-from utils.db import InitDB
-from utils.BattleInfo import BattleInfo
-from utils.db.db_model import Battle
-from utils.db.support import AssistFunction, AppProperties
+from app.db import InitDB
+from app.BattleInfo import BattleInfo
+from app.db.db_model import Battle
+from app.db.support import AssistFunction, AppProperties
 from tests import TEST_DATE_DIRECTORY
 
 __author__ = 'pachkun'
