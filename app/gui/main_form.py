@@ -107,7 +107,7 @@ class LoadReplayDialog(wx.Dialog):
 
     def choose_dir(self, event):
         dlg_dir = wx.DirDialog(self, message='Выберите папку с реплеями World of Warships',
-                               defaultPath=self.edit_dir_path.GetValue())
+                               defaultPath=self.replay_path_directory)
         if dlg_dir.ShowModal() == wx.ID_OK:
             self.edit_dir_path.SetValue(dlg_dir.GetPath())
         dlg_dir.Destroy()
