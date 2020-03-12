@@ -68,7 +68,7 @@ class BattleInfo:
     # https://developers.wargaming.net/reference/all/wows/encyclopedia/battletypes/?application_id=demo&r_realm=ru&run=1
     @property
     def type(self) -> str:
-        return self.battle_info['matchGroup']
+        return self.battle_info.get('matchGroup', None)
 
     # https://developers.wargaming.net/reference/all/wows/encyclopedia/battlearenas/?application_id=demo&r_realm=ru
     @property

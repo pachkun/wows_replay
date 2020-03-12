@@ -31,7 +31,8 @@ def parse_replay(file: BinaryIO):
     def battle_info_block(handle) -> dict:
         (json_block_size,) = struct.unpack("I", handle.read(4))
         try:
-            return json.loads(file.read(json_block_size))
+            json_block = file.read(json_block_size)
+            return json.loads(json_block)
         except Exception:
             raise ParserError('ошибка парсинга json с информацией о бое')
 

@@ -38,8 +38,8 @@ class AssistFunction:
     def update_number_of_platoon_member(self):
         with self.engine.session_scope() as session:
             result = session.query(Battle, func.count(Battle.battle_id), func.max(Ship.tier)) \
-                .join(BattleMember) \
-                .join(Ship) \
+                .join(BattleMember, Battle.battle_id == Battle.battle_id) \
+                .join(Ship, Ship.ship_id == BattleMember.ship_id) \
                 .filter(BattleMember.relation.in_([BattleInfo.FRIEND_TEAM, BattleInfo.PROTAGONIST])) \
                 .filter(BattleMember.player_id.in_(self.platoon_member())) \
                 .filter(Battle.type == BattleInfo.RANDOM_BATTLE) \
@@ -51,8 +51,8 @@ class AssistFunction:
     def update_matchmaker_level(self):
         with self.engine.session_scope() as session:
             result = session.query(Battle, func.max(Ship.tier)) \
-                .join(BattleMember) \
-                .join(Ship) \
+                .join(BattleMember, Battle.battle_id == Battle.battle_id) \
+                .join(Ship, Ship.ship_id == BattleMember.ship_id) \
                 .group_by(Battle.battle_id)
             for battle in result:
                 battle[0].matchmaking_level = battle[1]
